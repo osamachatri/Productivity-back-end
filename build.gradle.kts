@@ -36,4 +36,18 @@ dependencies {
     implementation("io.ktor:ktor-server-config-yaml")
     testImplementation("io.ktor:ktor-server-test-host")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    implementation("org.ktorm:ktorm-core:4.1.1")
+    implementation("org.mindrot:jbcrypt:0.4")
+    implementation("com.mysql:mysql-connector-j:9.2.0")
+    implementation("io.ktor:ktor-server-auth:$kotlin_version")
+    implementation("io.ktor:ktor-server-auth-jwt:$kotlin_version")
+    // JSON Serialization
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.6")
+    implementation("io.ktor:ktor-server-content-negotiation:2.3.6")
+
+    // Authentication
+    implementation("io.ktor:ktor-server-auth:2.3.6")
+    implementation("io.ktor:ktor-server-auth-jwt:2.3.6")
 }
