@@ -14,10 +14,7 @@ group = "com.oussama_chatri"
 version = "0.0.1"
 
 application {
-    mainClass.set("io.ktor.server.netty.EngineMain")
     mainClass.set("com.oussama_chatri.ApplicationKt")
-
-
     val isDevelopment: Boolean = project.ext.has("development")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
 }
