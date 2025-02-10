@@ -12,10 +12,10 @@ object JwtConfig {
 
     private val algorithm = Algorithm.HMAC256(SECRET_KEY)
 
-    fun generateToken(userId: Int): String {
+    fun generateToken(userId: String): String {
         return JWT.create()
             .withIssuer(ISSUER)
-            .withClaim("userId", userId.toString())
+            .withClaim("userId", userId)
             .withAudience(Audience)
             .withExpiresAt(Date(System.currentTimeMillis() + EXPIRATION_TIME))
             .sign(algorithm)

@@ -6,7 +6,7 @@ object NotesEntity : Table<Nothing>("notes") {
     val id = int("id").primaryKey()
     val title = varchar("title")
     val content = text("content")
-    val userId = int("user_id")
+    val userId = varchar("user_id")
     val editedAt = long("edited_at")
     val type = varchar("type")
 }

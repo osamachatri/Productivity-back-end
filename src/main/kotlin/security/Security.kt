@@ -17,9 +17,9 @@ fun Application.configureSecurity() {
         jwt("auth-jwt") {
             realm = "ktor app"
             verifier(
-                JWT.require(Algorithm.HMAC256(SECRET_KEY))  // ✅ Replace with your actual secret key
-                    .withAudience(Audience)  // ✅ Replace with your audience
-                    .withIssuer(ISSUER)  // ✅ Replace with your issuer
+                JWT.require(Algorithm.HMAC256(SECRET_KEY))
+                    .withAudience(Audience)
+                    .withIssuer(ISSUER)
                     .build()
             )
             validate { credential ->

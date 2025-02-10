@@ -9,7 +9,7 @@ object NoteDao {
     fun createNote(
         title: String,
         content: String,
-        userId: Int,
+        userId: String,
         editedAt: Long,
         type: String,
     ): Int {
@@ -22,7 +22,7 @@ object NoteDao {
         }
     }
 
-    fun getUserNotes(userId: Int): List<Note> {
+    fun getUserNotes(userId: String): List<Note> {
         return db.from(NotesEntity).select()
             .where { NotesEntity.userId eq userId }
             .map {
@@ -41,7 +41,7 @@ object NoteDao {
         noteId: Int,
         title: String,
         content: String,
-        userId: Int,
+        userId: String,
         editedAt: Long,
         type: String,
     ): Boolean {
@@ -57,7 +57,7 @@ object NoteDao {
         return updatedRows > 0
     }
 
-    fun deleteNote(noteId: Int, userId: Int): Boolean {
+    fun deleteNote(noteId: Int, userId: String): Boolean {
         val deletedRows = db.delete(NotesEntity) {
             (it.id eq noteId) and (it.userId eq userId)
         }

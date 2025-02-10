@@ -10,7 +10,7 @@ import io.ktor.server.routing.*
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class NoteRequest(val title: String, val content: String, val userId : Int, val editedAt: Long, val type: String)
+data class NoteRequest(val title: String, val content: String, val userId : String, val editedAt: Long, val type: String)
 
 fun Route.notesRoutes() {
     route("/notes") {
@@ -18,7 +18,7 @@ fun Route.notesRoutes() {
             post {
                 try {
                     val principal = call.principal<JWTPrincipal>()
-                    val userId = principal!!.payload.getClaim("userId").asInt()
+                    val userId = principal?.payload?.getClaim("userId")?.asString() ?: throw IllegalArgumentException("Invalid userId in token")
                     println(userId)
                     val request = call.receive<NoteRequest>()
 
@@ -36,7 +36,7 @@ fun Route.notesRoutes() {
 
             get {
                 val principal = call.principal<JWTPrincipal>()
-                val userId = principal!!.payload.getClaim("userId").asInt()
+                val userId = principal!!.payload.getClaim("userId").asString() ?: throw IllegalArgumentException("Invalid userId in token")
 
                 val notes = NoteDao.getUserNotes(userId)
                 call.respond(HttpStatusCode.OK, notes)
@@ -64,7 +64,7 @@ fun Route.notesRoutes() {
 
             delete("/{id}") {
                 val principal = call.principal<JWTPrincipal>()
-                val userId = principal!!.payload.getClaim("userId").asInt()
+                val userId = principal!!.payload.getClaim("userId").asString() ?: throw IllegalArgumentException("Invalid userId in token")
                 val noteId = call.parameters["id"]?.toIntOrNull()
 
                 if (noteId == null) {

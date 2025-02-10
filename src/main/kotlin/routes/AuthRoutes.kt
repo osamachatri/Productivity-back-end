@@ -72,7 +72,7 @@ fun Route.authRoutes() {
                 }
 
                 // Generate JWT token
-                val token = JwtConfig.generateToken(user.id)
+                val token = JwtConfig.generateToken(user.id.toString())
                 call.respond(HttpStatusCode.OK, mapOf("token" to token))
             }catch (e: Exception) {
                 e.printStackTrace()
