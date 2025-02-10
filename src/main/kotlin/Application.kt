@@ -11,6 +11,7 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.routing.*
 
 fun main(args: Array<String>) {
+    io.ktor.server.netty.EngineMain.main(emptyArray())
     embeddedServer(Netty, port = 8080, host = "0.0.0.0",
         module = Application::module
         ).start(wait = true)
