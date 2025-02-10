@@ -51,17 +51,3 @@ dependencies {
     implementation("io.ktor:ktor-server-auth:2.3.6")
     implementation("io.ktor:ktor-server-auth-jwt:2.3.6")
 }
-
-tasks.jar {
-    manifest {
-        attributes(
-            "Main-Class" to "com.yourpackage.YourMainClass"
-        )
-    }
-}
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
-}
