@@ -3,7 +3,7 @@ ktor:
     modules:
       - com.oussama_chatri.ApplicationKt.module
   deployment:
-    port: ${PORT}
+    port: 8080
 jwt:
   domain: "https://jwt-provider-domain/"
   audience: "jwt-audience"
