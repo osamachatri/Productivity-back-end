@@ -14,9 +14,18 @@ group = "com.oussama_chatri"
 version = "0.0.1"
 
 application {
-    mainClass.set("com.oussama_chatri.ApplicationKt")
+    mainClass.set("io.ktor.server.netty.EngineMain")
+
     val isDevelopment: Boolean = project.ext.has("development")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
+}
+
+tasks.jar {
+    manifest {
+        attributes(
+            "Main-Class" to application.mainClass.get()
+        )
+    }
 }
 
 repositories {
