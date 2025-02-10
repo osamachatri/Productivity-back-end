@@ -66,9 +66,3 @@ dependencies {
     implementation("io.ktor:ktor-server-auth:2.3.6")
     implementation("io.ktor:ktor-server-auth-jwt:2.3.6")
 }
-
-tasks.register<Exec>("runJar") {
-    group = "application"
-    description = "Runs the JAR file with specified JAVA_OPTS"
-    commandLine("sh", "-c", "java \$JAVA_OPTS -jar build/libs/*-all.jar")
-}
