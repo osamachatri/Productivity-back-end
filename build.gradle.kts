@@ -4,6 +4,7 @@ val logback_version: String by project
 val postgres_version: String by project
 
 plugins {
+    application
     kotlin("jvm") version "2.1.10"
     id("io.ktor.plugin") version "3.0.3"
     id("org.jetbrains.kotlin.plugin.serialization") version "2.1.10"
