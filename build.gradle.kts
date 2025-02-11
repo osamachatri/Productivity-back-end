@@ -23,6 +23,13 @@ repositories {
     mavenCentral()
 }
 
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "your.oussama_chatri.ApplicationKt"
+    }
+}
+
+
 dependencies {
     implementation("io.ktor:ktor-server-core")
     implementation("io.ktor:ktor-server-auth")
