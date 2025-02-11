@@ -29,6 +29,16 @@ tasks {
     }
 }
 
+tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
+    archiveBaseName.set("ktor-app")
+    archiveClassifier.set("")
+    archiveVersion.set("")
+    manifest {
+        attributes["Main-Class"] = "com.oussama_chatri.ApplicationKt"
+    }
+    mergeServiceFiles()
+}
+
 //tasks {
 //    named<com.gradleup.shadow.tasks.ShadowJar>("shadowJar") {
 //        archiveBaseName.set("ktor-app")
