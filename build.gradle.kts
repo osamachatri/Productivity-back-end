@@ -7,6 +7,7 @@ plugins {
     kotlin("jvm") version "2.1.10"
     id("io.ktor.plugin") version "3.0.3"
     id("org.jetbrains.kotlin.plugin.serialization") version "2.1.10"
+    id("com.gradleup.shadow") version "8.3.5"
 }
 
 group = "com.oussama_chatri"
@@ -18,6 +19,25 @@ application {
     val isDevelopment: Boolean = project.ext.has("development")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
 }
+
+tasks {
+    shadowJar {
+        archiveBaseName.set("ktor-app")
+        archiveClassifier.set("")
+        archiveVersion.set("")
+        mergeServiceFiles()
+    }
+}
+
+//tasks {
+//    named<com.gradleup.shadow.tasks.ShadowJar>("shadowJar") {
+//        archiveBaseName.set("ktor-app")
+//        archiveClassifier.set("")
+//        archiveVersion.set("")
+//        mergeServiceFiles()
+//    }
+//}
+
 
 repositories {
     mavenCentral()
@@ -51,4 +71,10 @@ dependencies {
     // Authentication
     implementation("io.ktor:ktor-server-auth:2.3.6")
     implementation("io.ktor:ktor-server-auth-jwt:2.3.6")
+}
+
+configurations.all {
+    resolutionStrategy {
+        force("com.github.johnrengelman:shadow:8.1.1")
+    }
 }
