@@ -25,7 +25,7 @@ repositories {
 
 tasks.withType<Jar> {
     manifest {
-        attributes["Main-Class"] = "your.oussama_chatri.ApplicationKt"
+        attributes["Main-Class"] = "com.oussama_chatri.ApplicationKt"
     }
 }
 
