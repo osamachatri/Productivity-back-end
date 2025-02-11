@@ -29,6 +29,12 @@ tasks {
     }
 }
 
+ktor {
+    fatJar {
+        archiveFileName.set("fat.jar")
+    }
+}
+
 tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
     archiveBaseName.set("ktor-app")
     archiveClassifier.set("")
